@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A.C.L Bréalaise - Actualités{% endblock %}
+
+
+
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+  <div class="col s12">
+<h1 class="text center">L'actualités du club</h1>
+  </div>
+  {% for Articles in articles %}
+  <div class="col s6">
+    <div class="card">
+      <div class="card-image">
+        <img src="/uploads/{{ Articles.image }}">
+        <span class="card-title">{{Articles.title}}</span>
+      </div>
+      <div class="card-content">
+        <p>{{Articles.content}}</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Voir plus</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<link href="{{ asset('build/css/accueil.css') }}" type="text/css" rel="stylesheet" />
+
+{% endblock %}

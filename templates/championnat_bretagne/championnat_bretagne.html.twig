@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A.C.L Bréalaise - Championnat de Bretagne{% endblock %}
+
+{% block body %}
+
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+       <div class="card-panel">
+         <div class="row valign-wrapper">
+           <div class="col s10">
+             <span class="black-text">
+               Pour vous engager cliquez sur le logo de la ligue
+             </span>
+           </div>
+           <div class="col s2">
+             <a href="https://www.ligue-moto-bretagne.com/" target="_blank">
+               <img src="https://zupimages.net/up/19/04/igtq.png" class="responsive-img" /></a>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="row">
+  <div class="col s12">
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+      <li class="tab col s3"><a href="#test4">Calandrier 2019</a></li>
+      <li class="tab col s3"><a href="#test1">Mes classements</a></li>
+      <li class="tab col s3"><a class="active" href="#test2">Mes résultats</a></li>
+    </ul>
+  </div>
+
+
+  <!-- Contenu "Camandrier 2019" -->
+  <div id="test4" class="col s12">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+            <th>Ville</th>
+            <th>Date</th>
+        </tr>
+      </thead>
+{% for CalandrierChampionnat in calandrier %}
+      <tbody>
+        <tr>
+          <td>{{CalandrierChampionnat.ville}}</td>
+          <td>{{CalandrierChampionnat.date|date('d-m-Y')}}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
+
+  <!-- Contenu "Mes Classements" -->
+  <div id="test1" class="col s12">
+    <table class="centered">
+      <thead>
+        <tr>
+            <th>Saisons</th>
+            <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Saison 2018</td>
+          <td>
+            <a class="waves-effect waves-light btn"
+            href="https://www.ligue-moto-bretagne.com/wp-content/uploads/2018/05/CLASSEMENT-CHPT-DE-BRETAGNE-SAISON-TRIAL-2018.pdf" target="_blank">
+              <i class="material-icons left">cloud</i>Voir le classement</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Saison 2017</td>
+          <td>
+            <a class="waves-effect waves-light btn"
+            href="https://www.ligue-moto-bretagne.com/wp-content/uploads/2017/03/CLASSEMENT-PROVISOIRE-CHPT-DE-BRETAGNE-SAISON-TRIAL-2017-6.pdf" target="_blank">
+              <i class="material-icons left">cloud</i>Voir le classement</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Saison 2016</td>
+          <td>
+            <a class="waves-effect waves-light btn"
+            href="https://www.ligue-moto-bretagne.com/classement-trial/" target="_blank">
+              <i class="material-icons left">cloud</i>Voir le classement</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Contenu "Mes resultats" -->
+  <div class="row">
+    <div id="test2" class="col s12">
+      <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+        <li class="tab col s3"><a href="#test6">2018</a></li>
+        <li class="tab col s3"><a href="#test7">2017</a></li>
+        <li class="tab col s3"><a class="active" href="#test8">2016</a></li>
+      </ul>
+
+      <!-- Résultats de l'année 2018 -->
+      <div id="test6" class="col s12">
+        <h1>Resultats 2018</h1>
+        <table class="centered">
+   <thead>
+     <tr>
+         <th>Ville</th>
+         <th>Date</th>
+         <th>Action</th>
+     </tr>
+   </thead>
+
+   <tbody>
+     <tr>
+       <td>Scaer</td>
+       <td>02 septembre 2018</td>
+       <td>
+         <a class="waves-effect waves-light btn" href="https://www.ligue-moto-bretagne.com/trial-scaer-4/" target="_blank">
+           <i class="material-icons right">cloud</i>Voir les résultats</a>
+       </td>
+     </tr>
+     <tr>
+       <td>Bourbriac</td>
+       <td>17 juin 2018</td>
+       <td>
+         <a class="waves-effect waves-light btn" href="https://www.ligue-moto-bretagne.com/bourbriac-trial-3/" target="_blank">
+           <i class="material-icons right">cloud</i>Voir les résultats</a>
+       </td>
+     </tr>
+     <tr>
+       <td>Ploneour</td>
+       <td>27 mai 2018</td>
+       <td>
+         <a class="waves-effect waves-light btn" href="https://www.ligue-moto-bretagne.com/ploneour-lanvern-trial-2/" target="_blank">
+           <i class="material-icons right">cloud</i>Voir les résultats</a>
+       </td>
+     </tr>
+     <tr>
+       <td>Cugand</td>
+       <td>13 mai 2018</td>
+       <td>
+         <a class="waves-effect waves-light btn" href="https://www.ligue-moto-bretagne.com/wp-content/uploads/2018/05/Résultat-Trial-de-CUGAND-2018-1.pdf" target="_blank">
+           <i class="material-icons right">cloud</i>Voir les résultats</a>
+       </td>
+     </tr>
+     <tr>
+       <td>Breal sous Montfort</td>
+       <td>22 avril 2018</td>
+       <td>
+         <a class="waves-effect waves-light btn" href="https://www.ligue-moto-bretagne.com/breal-sous-montfort-trial/" target="_blank">
+           <i class="material-icons right">cloud</i>Voir les résultats</a>
+       </td>
+     </tr>
+     <tr>
+       <td>Plechatel</td>
+       <td>03 mars 2018</td>
+       <td>
+         <a class="waves-effect waves-light btn" href="https://www.ligue-moto-bretagne.com/plechatel-trial-2/" target="_blank">
+           <i class="material-icons right">cloud</i>Voir les résultats</a>
+       </td>
+     </tr>
+   </tbody>
+ </table>
+      </div>
+
+      <div id="test7" class="col s12">
+        <h1>resultats 2017</h1>
+      </div>
+
+      <div id="test8" class="col s12">
+        <h1>resultats 2016</h1>
+      </div>
+
+    </div>
+
+
+</div>
+  </div>
+
+<script>
+$(document).ready(function(){
+  $('.tabs').tabs();
+});
+</script>
+
+{% endblock %}

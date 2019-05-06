@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+
+  <div class="py-5 text-center">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto col-md-6 col-10 bg-white p-5">
+          <h1 class="mb-4">Connexion</h1>
+          {% if error %}
+                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+          {% endif %}
+          <form action="{{ path('login') }}" method="post">
+            <div class="form-group"> 
+            <input type="text" class="form-control" placeholder="Username" id="username" name="_username"> </div>
+            <div class="form-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" id="password" name="_password"> 
+            <small class="form-text text-muted text-right">
+                <a href="#">Mot de passe oublié !</a>
+              </small> </div> <button type="submit" class="btn btn-primary">Connexion</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

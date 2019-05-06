@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% block stylesheet %}
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="{{ asset('build/css/layout.css') }}" type="text/css" rel="stylesheet" />
+  {% endblock %}
+
+  {% block javascripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  {% endblock %}
+
+</head>
+<!-- Dropdown contenus -->
+<ul id="championnats" class="dropdown-content">
+  <li><a href="{{ path('championnat_bretagne_show') }}">Championnat de Bretagne</a></li>
+  <li><a href="{{ path('championnat_france_show') }}">Championnat de France</a></li>
+  <li><a href="{{ path('championnat_europe') }}">Championnat d'Europe</a></li>
+</ul>
+
+<ul id="stages" class="dropdown-content">
+  <li><a href="#">Stage Vacances</a></li>
+  <li><a href="#">Stage Perfectionnement</a></li>
+  <li class="divider"></li>
+  <li><a href="{{ path('ecole') }}">Cours</a></li>
+</ul>
+
+{% if  app.user %}
+<!-- Profil Navbar -->
+<ul id="slide-out" class="sidenav">
+<li><div class="user-view">
+<div class="background">
+  <img src="https://zupimages.net/up/19/07/sikq.jpg">
+</div>
+<a href="#"><img class="circle" src="https://zupimages.net/up/19/04/y9vc.png"></a>
+<a href="#"><span class="white-text name">{{ app.user.username }} {{ app.user.nom }}</span></a>
+<a href="#"><span class="white-text email">{{ app.user.email }}</span></a>
+</div></li>
+<li><a href="{{path('profil')}}"><i class="material-icons">account_box</i>Votre profil</a></li>
+<li><a href="{{path('listing')}}">Listing</a></li>
+<li><div class="divider"></div></li>
+<li><a href="{{ path ('deconnexion') }}" class="waves-effect waves-dark btn red lighten-1">
+<i class="material-icons right">assignment_ind</i>Déconnexion</a></li>
+</ul>
+{% endif %}
+
+<!-- Navbar -->
+<nav class="responsive-nav">
+  <div class="nav-wrapper light-blue darken-4">
+    <a href="{{ path ('accueil') }}" class="brand-logo">A.C.L Bréalaise</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="{{ path ('ecole') }}">Ecole</a></li>
+      <li><a href="{{ path ('partenaire') }}">Nos partenaires</a></li>
+      {% if not app.user or app.user.username !="admin" %}
+      <li><a href="{{ path ('article_show') }}">Actualités</a></li>
+      {% else %}
+      <li><a href="{{ path ('article_new') }}">Créer un article</a></li>
+      {% endif %}
+      <li><a href="{{ path ('xtrial') }}">X-Trial</a></li>
+
+      <!-- L'appelle du contenus des dropdown -->
+      <li><a class="dropdown-trigger btn blue darken-2" href="#!" data-target="championnats">
+      <i class="material-icons right">expand_more</i>Championnats</a></li>
+
+      <li><a class="dropdown-trigger btn blue darken-2" href="#!" data-target="stages">
+      <i class="material-icons right">expand_more</i>Stages & Cours</a></li>
+
+<!-- Si il n'y a pas d'utilisateur connécté (connexion & Devenir Adhérent) s'affiche -->
+{% if not app.user %}
+    <li><a class="waves-effect waves-dark btn green lighten-1" href="{{path('connexion')}}">
+    <i class="material-icons right">exit_to_app</i>Connexion</a></li>
+
+    <li><a href="{{ path ('inscription') }}" class="waves-effect waves-dark btn green lighten-1">
+    <i class="material-icons right">assignment_ind</i>Devenir Adhérant</a></li>
+
+<!-- L'utilisateur est connécté, seul le bouton déconnexion s'affiche -->
+{% else %}
+<li data-target="slide-out" class="sidenav-trigger">
+  <a href="#">
+    <i class="material-icons right">dashboard</i>Bienvenue {{ app.user.username }}</a></li>
+{% endif %}
+
+    </ul>
+  </div>
+</nav>
+
+
+<!-- Pour la consultation sur un plus petit apparail (mobile) -->
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{{path('accueil')}}"class="waves-effect waves-light btn green">Accueil</a></li>
+    <li><a href="{{path('ecole')}}" class="waves-effect waves-dark">L'Ecole</a></li>
+    <li><a href="{{path('article_show')}}">Actualités</a></li>
+    <li><a href="{{path('partenaire')}}">Nos Partenaires</a></li>
+    <li><a href="{{ path ('xtrial') }}">X-Trial</a></li>
+
+  {% if not app.user %}
+
+    <li><a href="{{ path ('inscription') }}" class="waves-effect waves-dark btn green lighten-1">
+    <i class="material-icons right">assignment_ind</i>Devenir Adhérant</a></li>
+
+    <li><a href="{{ path ('connexion') }}" class="waves-effect waves-dark btn green lighten-1">
+    <i class="material-icons right">assignment_ind</i>Connexion</a></li>
+
+  <!-- L'utilisateur est connécté, seul le bouton déconnexion s'affiche -->
+  {% else %}
+    <li data-target="slide-out" class="sidenav-trigger"><a href="#"><i class="material-icons right">view_module</i>Bienvenue {{ app.user.username }}</a></li>
+  {% endif %}
+</ul>
+
+
+<script>
+$(".dropdown-trigger").dropdown();
+
+<!-- Initialisation Sidnav  -->
+$(document).ready(function(){
+   $('.sidenav').sidenav({
+     edge: 'right'
+
+   });
+ });
+</script>
+
+
+
+<body>
+{% block body %}
+
+<div id="container">
+  <div id="main">
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+  </body>
+</html>

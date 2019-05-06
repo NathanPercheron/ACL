@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<title>Création d'un article</title>
+{% endblock %}
+
+
+{% block body %}
+
+<h1 class="text center">Créer un article</h1>
+
+<div class="container">
+  {{form_start(form)}}
+  <div class="row">
+    <div class="row">
+        <div class="input-field col s12">
+          {{form_label(form.title, 'Titre de l\'article')}}
+          {{form_widget(form.title)}}
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12">
+            {{form_label(form.content, 'Contenu de l\'article')}}
+            {{form_widget(form.content, {'attr':{'class':'materialize-textarea'}})}}
+          </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              {{form_row(form.image)}}
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Créer l'article
+          <i class="material-icons right">send</i>
+        </button>
+              </div>
+            </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A.C.L Bréalaise - Contacter nous{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+      <div class="col s6">
+<h1 class="mb-3">Contactez nous !</h1>
+<p class="lead mb-4">Pour plus d'informations, remplisez ce formulaire et nous vous recontacterons dans les plus brefs délais.</p>
+      <iframe width="100%" height="350"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2666.885138505384!2d-1.9256236841203433!3d48.054555464918245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480f026e78741575%3A0x5a0b9ddecef81a72!2sACL+Breal!5e0!3m2!1sfr!2sfr!4v1548667578279" scrolling="no" frameborder="0"></iframe>
+      </div>
+      {{ form_start(form) }}
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col s6">
+          {% for message in app.flashes('info') %}
+                    <div class="card-panel green accent-4">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+        </div>
+       <div class="input-field col s6">
+         <i class="material-icons prefix">account_circle</i>
+         {{ form_label(form.nom) }}
+         {{ form_widget(form.nom, {'attr':{'class': "validate"}}) }}
+       </div>
+       <div class="input-field col s6">
+         <i class="material-icons prefix">email</i>
+         {{ form_label(form.email) }}
+         {{ form_widget(form.email, {'attr':{'class': "validate"}}) }}
+       </div>
+       <div class="input-field col s6">
+         <i class="material-icons prefix">message</i>
+         {{ form_label(form.message) }}
+         {{ form_widget(form.message, {'attr':{'class': "materialize-textarea"}}) }}
+       </div>
+       <div class="input-field col s6">
+         <button class="btn waves-effect waves-light light-blue darken-4" type="submit" name="action">Envoyer
+             <i class="material-icons right">send</i>
+           </button>
+       </div>
+     </div>
+
+  {{ form_end(form) }}
+
+
+<script>
+$(document).ready(function() {
+  $('input#input_text, textarea#textarea2').characterCounter();
+});
+</script>
+
+
+{% endblock %}

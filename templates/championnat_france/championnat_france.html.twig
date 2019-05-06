@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A.C.L Bréalaise - Championnat de France{% endblock %}
+
+{% block body %}
+
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+       <div class="card-panel">
+         <div class="row valign-wrapper">
+           <div class="col s10">
+               <a class="waves-effect waves-light btn" href="https://ffm.ffmoto.org/sites/default/files/documents/pdf/2018/01/Bulletin_d_engagement_Championnat_de_France_de_Trial.pdf" target="_blank">
+                 <i class="material-icons right">edit</i>Pour vous engagez</a>
+           </div>
+           <div class="col s2">
+             <a href="https://www.ffmoto.org/" target="_blank">
+               <img src="https://zupimages.net/up/19/04/jv8q.png" class="responsive-img"/></a>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="row">
+  <div class="col s12">
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+      <li class="tab col s3"><a href="#test1">Calandrier 2019</a></li>
+    </ul>
+  </div>
+  <div id="test1" class="col s12">
+    <table>
+      <thead>
+        <tr>
+            <th>Ville</th>
+            <th>Date</th>
+            <th>Localiser</th>
+        </tr>
+      </thead>
+{% for CalandrierFrance in calandrier %}
+      <tbody>
+        <tr>
+          <td>{{CalandrierFrance.ville}}</td>
+          <td>{{CalandrierFrance.date|date('d-m-Y')}}</td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+$('.tabs').tabs();
+});
+
+</script>
+
+{% endblock %}
