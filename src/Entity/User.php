@@ -3,18 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AdherentRepository")
- * @UniqueEntity(
- * fields={"email"},
- * message="L'email que vous avez indiqué est déjà utilisée !"
- * )
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class Adherent implements UserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -23,9 +17,8 @@ class Adherent implements UserInterface
      */
     private $id;
 
-        /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
+    /**
+     * @ORM\Column(type="string", length=255)
      */
     private $username;
 
@@ -36,23 +29,13 @@ class Adherent implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email()
      */
     private $email;
 
-
-    public $confirm_password;
-
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $roles;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -72,32 +55,33 @@ class Adherent implements UserInterface
     /**
      * @ORM\Column(type="integer")
      */
-    private $telephone_domicile;
+    private $telephoned;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $telephone_portable;
+    private $telephonep;
 
-
-    public function __construct()
-    {
-        $this->roles = array('ROLE_USER');
-    }
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    public function setUsername($username)
+    public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -122,16 +106,6 @@ class Adherent implements UserInterface
         $this->email = $email;
 
         return $this;
-    }
-
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
     }
 
     public function getPassword(): ?string
@@ -182,42 +156,60 @@ class Adherent implements UserInterface
         return $this;
     }
 
-    public function getTelephoneDomicile(): ?int
+    public function getTelephoned(): ?int
     {
-        return $this->telephone_domicile;
+        return $this->telephoned;
     }
 
-    public function setTelephoneDomicile(int $telephone_domicile): self
+    public function setTelephoned(int $telephoned): self
     {
-        $this->telephone_domicile = $telephone_domicile;
+        $this->telephoned = $telephoned;
 
         return $this;
     }
 
-    public function getTelephonePortable(): ?int
+    public function getTelephonep(): ?int
     {
-        return $this->telephone_portable;
+        return $this->telephonep;
     }
 
-    public function setTelephonePortable(int $telephone_portable): self
+    public function setTelephonep(int $telephonep): self
     {
-        $this->telephone_portable = $telephone_portable;
+        $this->telephonep = $telephonep;
 
         return $this;
     }
-
 
     public function getSalt()
     {
         return null;
     }
 
-    public function getRoles()
+    public function getRoles() : array
     {
-        return $this->roles;
+        $roles = $this->roles;
+
+        $roles[] = "ROLE_USER";
+
+        return array_unique($roles);
+    }
+
+    public function addRole($roles){
+        $roles = strtoupper($roles);
+        if(!in_array($roles,$this->roles,true)){
+            $this->roles[]=$roles;
+        }
+        return $this;
     }
 
     public function eraseCredentials()
     {
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }

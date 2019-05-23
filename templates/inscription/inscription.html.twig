@@ -1,98 +1,17 @@
 {% extends "base.html.twig" %}
 
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
-
 {% block body %}
 
 <div class="container">
-  <div class="row">
-<div class="col s12">
-<h1>Devenir Adhérent</h1>
-</div>
-<div class="col s6"></div>
-<div class="col s6">
-  {{ form_start(form) }}
-
-  {% for message in app.flashes('info') %}
-    <div class="card-panel green accent-4">
-      {{ message }}
-    </div>
-  {% endfor %}
-  <div class="row">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          {{ form_label(form.username, 'Prénom') }}
-          {{ form_widget(form.username, {'attr':{'class':'validate'}}) }}
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          {{ form_label(form.nom) }}
-          {{ form_widget(form.nom, {'attr':{'class':'validate'}}) }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">locked</i>
-          {{ form_label(form.password, 'Mot de passe') }}
-          {{ form_widget(form.password, {'attr':{'class':'validate'}}) }}
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">locked</i>
-          {{ form_label(form.confirm_password, 'Confirmez le mot de passe') }}
-          {{ form_widget(form.confirm_password, {'attr':{'class':'validate'}}) }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">email</i>
-          {{ form_label(form.email) }}
-          {{ form_widget(form.email, {'attr':{'class':'validate'}}) }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">home</i>
-          {{ form_label(form.adresse) }}
-          {{ form_widget(form.adresse, {'attr':{'class':'validate'}}) }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">location_city</i>
-          {{ form_label(form.ville) }}
-          {{ form_widget(form.ville, {'attr':{'class':'validate'}}) }}
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">location_city</i>
-          {{ form_label(form.cdpostal, 'Code postal') }}
-          {{ form_widget(form.cdpostal, {'attr':{'class':'validate'}}) }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">phone</i>
-          {{ form_label(form.telephone_domicile, 'Téléphone Domicile') }}
-          {{ form_widget(form.telephone_domicile, {'attr':{'class':'validate'}}) }}
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">smartphone</i>
-          {{ form_label(form.telephone_portable, 'Téléphone Portable') }}
-          {{ form_widget(form.telephone_portable, {'attr':{'class':'validate'}}) }}
-        </div>
-      </div>
-      <div class="input-field col s12">
+{{ form_start(form) }}
+<div class="input-field col s12">
       <button class="btn waves-effect waves-light light-blue darken-4"
       type="submit" name="action">Inscription
         <i class="material-icons right">send</i>
         </button>
       </div>
-  </div>
-  {{ form_end(form) }}
+{{ form_end(form) }}
 </div>
 
-
-
-  <link href="{{ asset('build/css/inscription.css') }}" type="text/css" rel="stylesheet" />
 
 {% endblock %}

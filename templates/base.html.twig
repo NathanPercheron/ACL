@@ -20,9 +20,9 @@
 </head>
 <!-- Dropdown contenus -->
 <ul id="championnats" class="dropdown-content">
-  <li><a href="{{ path('championnat_bretagne_show') }}">Championnat de Bretagne</a></li>
-  <li><a href="{{ path('championnat_france_show') }}">Championnat de France</a></li>
-  <li><a href="{{ path('championnat_europe') }}">Championnat d'Europe</a></li>
+  <li><a href="{{ path ('championnat_bretagne_show') }}">Championnat de Bretagne</a></li>
+  <li><a href="{{ path ('championnat_france_show') }}">Championnat de France</a></li>
+  <li><a href="{{ path ('championnat_europe') }}">Championnat d'Europe</a></li>
 </ul>
 
 <ul id="stages" class="dropdown-content">
@@ -43,10 +43,8 @@
 <a href="#"><span class="white-text name">{{ app.user.username }} {{ app.user.nom }}</span></a>
 <a href="#"><span class="white-text email">{{ app.user.email }}</span></a>
 </div></li>
-<li><a href="{{path('profil')}}"><i class="material-icons">account_box</i>Votre profil</a></li>
-<li><a href="{{path('listing')}}">Listing</a></li>
 <li><div class="divider"></div></li>
-<li><a href="{{ path ('deconnexion') }}" class="waves-effect waves-dark btn red lighten-1">
+<li><a href="{{ path ('security_logout') }}" class="waves-effect waves-dark btn red lighten-1">
 <i class="material-icons right">assignment_ind</i>Déconnexion</a></li>
 </ul>
 {% endif %}
@@ -59,7 +57,7 @@
     <ul class="right hide-on-med-and-down">
       <li><a href="{{ path ('ecole') }}">Ecole</a></li>
       <li><a href="{{ path ('partenaire') }}">Nos partenaires</a></li>
-      {% if not app.user or app.user.username !="admin" %}
+      {% if not app.user or app.user.roles !="ROLE_ADMIN" %}
       <li><a href="{{ path ('article_show') }}">Actualités</a></li>
       {% else %}
       <li><a href="{{ path ('article_new') }}">Créer un article</a></li>
@@ -75,7 +73,7 @@
 
 <!-- Si il n'y a pas d'utilisateur connécté (connexion & Devenir Adhérent) s'affiche -->
 {% if not app.user %}
-    <li><a class="waves-effect waves-dark btn green lighten-1" href="{{path('connexion')}}">
+    <li><a class="waves-effect waves-dark btn green lighten-1" href="{{ path ('security_connexion') }}">
     <i class="material-icons right">exit_to_app</i>Connexion</a></li>
 
     <li><a href="{{ path ('inscription') }}" class="waves-effect waves-dark btn green lighten-1">
@@ -103,10 +101,10 @@
 
   {% if not app.user %}
 
-    <li><a href="{{ path ('inscription') }}" class="waves-effect waves-dark btn green lighten-1">
+    <li><a href="#" class="waves-effect waves-dark btn green lighten-1">
     <i class="material-icons right">assignment_ind</i>Devenir Adhérant</a></li>
 
-    <li><a href="{{ path ('connexion') }}" class="waves-effect waves-dark btn green lighten-1">
+    <li><a href="#" class="waves-effect waves-dark btn green lighten-1">
     <i class="material-icons right">assignment_ind</i>Connexion</a></li>
 
   <!-- L'utilisateur est connécté, seul le bouton déconnexion s'affiche -->

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190218160544 extends AbstractMigration
+final class Version20190523081909 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20190218160544 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE stage_vacance_date_stage (stage_vacance_id INT NOT NULL, date_stage_id INT NOT NULL, INDEX IDX_F0062E7815AE8B47 (stage_vacance_id), INDEX IDX_F0062E78E1ADB835 (date_stage_id), PRIMARY KEY(stage_vacance_id, date_stage_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE stage_vacance_date_stage ADD CONSTRAINT FK_F0062E7815AE8B47 FOREIGN KEY (stage_vacance_id) REFERENCES stage_vacance (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE stage_vacance_date_stage ADD CONSTRAINT FK_F0062E78E1ADB835 FOREIGN KEY (date_stage_id) REFERENCES date_stage (id) ON DELETE CASCADE');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(255) NOT NULL, nom VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, adresse VARCHAR(255) NOT NULL, ville VARCHAR(255) NOT NULL, cdpostal INT NOT NULL, telephoned INT NOT NULL, telephonep INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
@@ -32,6 +30,6 @@ final class Version20190218160544 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE stage_vacance_date_stage');
+        $this->addSql('DROP TABLE user');
     }
 }
