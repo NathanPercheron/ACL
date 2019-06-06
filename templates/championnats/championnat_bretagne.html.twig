@@ -28,27 +28,6 @@
     </ul>
   </div>
 
-
-  <!-- Contenu "Camandrier 2019" -->
-  <div id="test4" class="col s12">
-    <table class="responsive-table">
-      <thead>
-        <tr>
-            <th>Ville</th>
-            <th>Date</th>
-        </tr>
-      </thead>
-{% for CalandrierChampionnat in calandrier %}
-      <tbody>
-        <tr>
-          <td>{{CalandrierChampionnat.ville}}</td>
-          <td>{{CalandrierChampionnat.date|date('d-m-Y')}}</td>
-        </tr>
-      </tbody>
-      {% endfor %}
-    </table>
-  </div>
-
   <!-- Contenu "Mes Classements" -->
   <div id="test1" class="col s12">
     <table class="centered">

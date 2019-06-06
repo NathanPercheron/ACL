@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="{{ asset('build/css/layout.css') }}" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   {% endblock %}
 
   {% block javascripts %}
@@ -20,9 +21,9 @@
 </head>
 <!-- Dropdown contenus -->
 <ul id="championnats" class="dropdown-content">
-  <li><a href="{{ path ('championnat_bretagne_show') }}">Championnat de Bretagne</a></li>
-  <li><a href="{{ path ('championnat_france_show') }}">Championnat de France</a></li>
-  <li><a href="{{ path ('championnat_europe') }}">Championnat d'Europe</a></li>
+  <li><a href="{{ path ('bretagne') }}">Championnat de Bretagne</a></li>
+  <li><a href="{{ path ('france') }}">Championnat de France</a></li>
+  <li><a href="{{ path ('europe') }}">Championnat d'Europe</a></li>
 </ul>
 
 <ul id="stages" class="dropdown-content">
@@ -52,7 +53,10 @@
 <!-- Navbar -->
 <nav class="responsive-nav">
   <div class="nav-wrapper light-blue darken-4">
+  <div class="container">
     <a href="{{ path ('accueil') }}" class="brand-logo">A.C.L Bréalaise</a>
+      
+    </div>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li><a href="{{ path ('ecole') }}">Ecole</a></li>
@@ -131,14 +135,32 @@ $(document).ready(function(){
 <body>
 {% block body %}
 
-<div id="container">
-  <div id="main">
-
-  </div>
-</div>
-
-
 
 {% endblock %}
   </body>
+
+        <footer class="page-footer light-blue darken-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">A.C.L Bréalaise</h5>
+                <p class="grey-text text-lighten-4">Merci de votre visite sur notre site de l'acl</p>
+                <p>Pour nous contacter : percheron.nathan@outlook.fr</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Réseaux sociaux</h5>
+                <ul>
+                  <li><a href="https://www.facebook.com/ACLBREALAISE/" class="fa fa-facebook"></a>acebook</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2019 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
 </html>

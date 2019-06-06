@@ -1,25 +1,31 @@
-{% extends 'base.html.twig' %}
-
-
 {% block body %}
 
 <title>ACL Bréalaise - Tableau de bord</title>
 
-        <div class="row">
-        
-      <div class="col s12 m4 13">
+<!-- Page Layout here -->
+    <div class="row">
+
+      <div class="col s3">
         <!-- Grey navigation panel -->
-        <img class="responsive-img" src="https://i.postimg.cc/q6nxMZPx/7789283353-dafy-moto.png">
         <br>
-        <a class="waves-effect waves-light" href="{{ path ('article_new') }}"><i class="material-icons left">cloud</i>Créer un article</a>
-        <li>
-        <a class="waves-effect waves-light" href="{{ path ('partenaire_new') }}"><i class="material-icons left">cloud</i>Créer un partenaire</a>
+        <div class="container">
+          <img class="responsive-img" src="https://zupimages.net/up/19/04/y9vc.png" width="350">
+        </div>
+        <div class="divider"></div>
+
+        <a class="btn-flat" href="{{ path ('article_new') }}">Créer un article</a>
+        <br>
+        <a class="btn-flat" href="{{ path ('partenaire_new') }}">Créer un partenaire</a>
 
       </div>
-      <div class="col s12 m8 19">
+
+      <div class="col s9">
         <!-- Teal page content  -->
-        <p>Ceci est la navigation sur la droite</p>
+        <div class="container">
+        <h1>Tableau de bord administrateur</h1>
+        </div>
       </div>
+
     </div>
 
 {% endblock %}
