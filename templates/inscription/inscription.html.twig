@@ -2,16 +2,88 @@
 
 {% block body %}
 
+<title>ACL Bréalaise - Inscription</title>
+<br>
+
 <div class="container">
-{{ form_start(form) }}
-<div class="input-field col s12">
-      <button class="btn waves-effect waves-light light-blue darken-4"
-      type="submit" name="action">Inscription
-        <i class="material-icons right">send</i>
-        </button>
+  <div class="col s12 m4 l8">
+    <div class="card-panel grey lighten-5">
+      <div class="col s12">
+        <h1 class="text center">Inscription</h1>
       </div>
-{{ form_end(form) }}
+
+{{ form_start(form) }}
+<div class="container">
+<div class="row">
+<div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+    {{ form_label(form.username, 'Prénom') }}
+    {{ form_widget(form.username, {'attr':{'class': "validate"}}) }}
 </div>
+<div class="input-field col s6">
+    <i class="material-icons prefix">account_circle</i>
+    {{ form_label(form.nom) }}
+    {{ form_widget(form.nom, {'attr':{'class': "validate"}}) }}
+</div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">lock_outline</i>
+        {{ form_label(form.password, 'Mot de passe') }}
+        {{ form_widget(form.password, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">markunread_mailbox</i>
+        {{ form_label(form.adresse) }}
+        {{ form_widget(form.adresse, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s6">
+        <i class="material-icons prefix">location_city</i>
+        {{ form_label(form.ville) }}
+        {{ form_widget(form.ville, {'attr':{'class': "validate"}}) }}
+    </div>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">location_city</i>
+        {{ form_label(form.cdpostal, 'Code postal') }}
+        {{ form_widget(form.cdpostal, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s6">
+        <i class="material-icons prefix">phone</i>
+        {{ form_label(form.telephoned, 'Téléphone domicile') }}
+        {{ form_widget(form.telephoned, {'attr':{'class': "validate"}}) }}
+    </div>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">smartphone</i>
+        {{ form_label(form.telephonep, 'Téléphone portable') }}
+        {{ form_widget(form.telephonep, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+      <button class="waves-effect waves-light btn" type="submit" name="action"><i class="material-icons left">edit</i>Inscription</button>
+    </div>
+    </div>
+
+
+</div>
+    
+    </div>
+  </div>
+</div>
+{{ form_end(form) }}
 
 
 {% endblock %}

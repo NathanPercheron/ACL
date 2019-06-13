@@ -26,7 +26,7 @@ class ArticleType extends AbstractType
                 'multiple' => true,
                 'placeholder' => 'Choisissez...'
             ))
-            ->add('image', FileType::class,array ('label' => 'Veuillez ajouter une image' ));
+            ->add('image', FileType::class,array ('label' => 'Veuillez ajouter une image'));
     }
 
     public function configureOptions(OptionsResolver $resolver)

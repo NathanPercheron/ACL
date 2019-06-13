@@ -5,17 +5,43 @@
 <title>Création d'un article</title>
 
 <h1 class="text center">Créer un article</h1>
-<div class="container">
+
     <div class="row">
-        <div class="col s12">
+      <div class="col s7 push-s5">
+      <div class="container">
         {{form_start(form)}}
         {{form_widget(form)}}
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">First Name</label>
+        </div>
             <button class="btn waves-effect waves-light light-blue darken-4" type="submit" name="action">Créer l'article
             <i class="material-icons right">send</i></button>
-        {{form_end(form)}}
+        {{form_end(form)}} 
+      </div>
+      </div>
+      <div class="col s5 pull-s7">
+          <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">First Name</label>
         </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+          <input id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">Telephone</label>
+        </div>
+      </div>
+    </form>
+  </div>
+        
+      </div>
     </div>
-</div>
+
 <script>
   $(document).ready(function(){
     $('select').formSelect();

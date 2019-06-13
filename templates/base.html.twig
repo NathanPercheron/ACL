@@ -78,11 +78,9 @@
 
 <!-- Si il n'y a pas d'utilisateur connécté (connexion & Devenir Adhérent) s'affiche -->
 {% if not app.user %}
-    <li><a class="waves-effect waves-dark btn green lighten-1" href="{{ path ('security_connexion') }}">
-    <i class="material-icons right">exit_to_app</i>Connexion</a></li>
 
-    <li><a href="{{ path ('inscription') }}" class="waves-effect waves-dark btn green lighten-1">
-    <i class="material-icons right">assignment_ind</i>Devenir Adhérant</a></li>
+    <li><a href="{{ path ('security_connexion') }}" class="waves-effect waves-dark btn green lighten-1">
+    <i class="material-icons right">assignment_ind</i>Connexion / Inscription</a></li>
 
 <!-- L'utilisateur est connécté, seul le bouton déconnexion s'affiche -->
 {% else %}

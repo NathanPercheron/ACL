@@ -15,7 +15,7 @@ class PartenaireType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class)
-            ->add('image', FileType::class,array ('label' => 'Veuillez ajouter une image'))
+            ->add('image', FileType::class)
         ;
     }
 

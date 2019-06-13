@@ -1,34 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}A.C.L Bréalaise - Connexion{% endblock %}
-
 {% block body %}
 
-      <div class="container">
-        <h1 class="TextType center">Connexion</h1>
-        <form action="{{ path ('security_connexion') }}" method="post">
-          <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">email</i>
-            <input id="email" type="email" class="validate" required name="_username">
-            <label for="email">Email</label>
-          </div>
+<title>ACL Bréalaise - Connexion & Inscription</title>
+
+  <div class="row">
+      <div class="col s12">
+        <h1 class="text center"></h1>
+      </div>
+    <div class="col s1"></div>
+      <div class="col s5">
+          <h2 class="text center">Inscription</h2>
+    <br>
+
+  <div class="col s4">
+    <!-- Promo Content 1 goes here -->
+    <div class="center promo promo-example">
+<i class="material-icons">access_time</i>
+
+        <h3 class="promo-caption">Historique</h3>
+        <p>
+            L’école labellisée EFM, créée en 2002, 
+            son but étant de promouvoir le Trial auprès des jeunes de la région, 
+            et de les accompagner vers la compétition.
+        </p>
+    </div>
+</div>
+
+<div class="col s4">
+    <!-- Promo Content 2 goes here -->
+    <div class="center promo promo-example">
+<i class="material-icons">account_box</i>
+
+        <h3 class="promo-caption">Fiche</h3>
+        <p>
+            Ses heures d’ouverture pour les cours sont de 14h00 à 16h00 le mercredi, et de 10h00 à 12h00 le samedi.
+        </p>
+    </div>
+</div>
+
+<div class="col s4">
+    <!-- Promo Content 3 goes here -->
+    <div class="center promo promo-example">
+<i class="material-icons">search</i>
+
+        <h3 class="promo-caption">Recherche</h3>
+        <p>
+            Des stages sont organisés lors des vacances scolaires un planning est disponible sur la page école.
+            Des stages adultes sont proposés tout au long de l’année.
+        </p>
         </div>
+    </div>
+    <h1 class="text center">
+        <a class="waves-effect waves-light green lighten-1 btn" href="{{ path ('inscription') }}"><i class="material-icons left">edit</i>Inscription</a>
+    </h1>
+</div>
+
+
+<div class="container">
+    <div class="col s2"></div>
+      <div class="col s4">
+          <h2 class="TextType center">Connexion</h2>
+          <form action="{{ path ('security_connexion') }}" method="post">
         <div class="row">
         <div class="input-field col s12">
-          <i class="material-icons prefix">locked</i>
-          <input id="password" type="password" class="validate" required name="_password">
-          <label for="password">Mot de passe</label>
+            <i class="material-icons prefix">email</i>
+            <input class="validate" id="email" name="_username" required type="email">
+            <label for="email">Email</label>
         </div>
+    </div>
+        <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">locked</i>
+            <input class="validate" id="password" name="_password" required type="password">
+            <label for="password">Mot de passe</label>
+        </div>
+    </div>
+        <div class="input-field col s12">
+        <button class="btn waves-effect waves-light light-blue darken-4" name="action" type="submit">Connexion
+          <i class="material-icons right">check</i>
+        </button>
+    </div>
+</form>
+</div>
       </div>
-          <div class="input-field col s12">
-            <button class="btn waves-effect waves-light light-blue darken-4"
-            type="submit" name="action">Connexion
-                <i class="material-icons right">check</i>
-              </button>
-          </div>
-        </form>
-      </div>
+  </div>
+
+<link href="{{ asset('build/css/connexion.css') }}" type="text/css" rel="stylesheet"/>
 
 
 {% endblock %}
