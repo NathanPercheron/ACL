@@ -2,35 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Calandrier;
+use App\Entity\Inscription;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-
-class UserType extends AbstractType
+class InscriptionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
             ->add('nom')
-            ->add('email')
-            ->add('password', PasswordType::class)
-            ->add('adresse')
-            ->add('ville')
-            ->add('cdpostal')
-            ->add('telephoned')
-            ->add('telephonep')
-            
+            ->add('dates', EntityType::class, [
+                'class' => Calandrier::class,
+                'multiple' => true,
+                'expanded' => true,
+            ])
+
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Inscription::class,
         ]);
     }
 }

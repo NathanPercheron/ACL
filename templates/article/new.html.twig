@@ -1,46 +1,70 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
+
 
 {% block body %}
 
 <title>Création d'un article</title>
 
-<h1 class="text center">Créer un article</h1>
+<div class="row">
 
-    <div class="row">
-      <div class="col s7 push-s5">
-      <div class="container">
-        {{form_start(form)}}
-        {{form_widget(form)}}
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">First Name</label>
-        </div>
-            <button class="btn waves-effect waves-light light-blue darken-4" type="submit" name="action">Créer l'article
-            <i class="material-icons right">send</i></button>
-        {{form_end(form)}} 
-      </div>
-      </div>
-      <div class="col s5 pull-s7">
-          <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">phone</i>
-          <input id="icon_telephone" type="tel" class="validate">
-          <label for="icon_telephone">Telephone</label>
-        </div>
-      </div>
-    </form>
-  </div>
+    <div
+        class="col s3"><!-- Grey navigation panel -->
+    </div>
+
+    <div class="col s9">
+        <h1 class="text center">Création d'un article</h1>
+        <br>
+{{form_start(form)}}
+
+        <div class="container">
+          <div class="card-panel grey lighten-5">
+<div class="row">
+    <div class="input-field col s6">
+        <i class="material-icons prefix">title</i>
+        {{ form_label(form.title, 'Titre de l\'article') }}
+        {{ form_widget(form.title, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">chat</i>
+        {{ form_label(form.content, 'Contenu de l\'article') }}
+        {{ form_widget(form.content, {'attr':{'class': "materialize-textarea"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s6">
+        <i class="material-icons prefix">view_list</i>
+        {{ form_label(form.content, 'Categorie') }}
+        {{ form_widget(form.laCategorie, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        {{ form_widget(form.image, {'attr':{'class': "validate"}}) }}
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <button class="waves-effect waves-light btn" name="action" type="submit">
+            <i class="material-icons left">edit</i>Créer l'article</button>
+    </div>
+</div>
+
+
+
+
+
+
+
         
+{{form_end(form)}}
+        </div>
       </div>
     </div>
+
+</div>
+
 
 <script>
   $(document).ready(function(){

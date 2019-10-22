@@ -1,11 +1,52 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
+
 
 {% block body %}
 
-<title>Création d'un partenaire</title>
+    <title>Création d'un article</title>
 
-<h1 class="text center">Créer un partenaire</h1>
+    <div class="row">
 
-   
+        <div class="col s3"><!-- Grey navigation panel -->
+        </div>
+
+        {{form_start(form)}}
+        <div class="col s9">
+            <h1 class="text center">Création d'un partenaire</h1>
+
+        <div class="container">
+            <div class="card-panel grey lighten-5">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">title</i>
+                {{ form_label(form.nom, 'Nom du partenaire') }}
+                {{ form_widget(form.nom, {'attr':{'class': "validate"}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form_widget(form.image, {'attr':{'class': "validate"}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <button class="waves-effect waves-light btn" name="action" type="submit">
+                    <i class="material-icons left">edit</i>Créer le partenaire</button>
+            </div>
+        </div>
+            </div>
+        </div>
+        {{form_end(form)}}
+
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
 
 {% endblock %}
+

@@ -14,7 +14,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(Request $request)
+    public function contact(Request $request, \Swift_Mailer $mailer)
     {
       // 1) build the form
       $contact = new Contact();
@@ -28,6 +28,23 @@ class ContactController extends AbstractController
           $entityManager = $this->getDoctrine()->getManager();
           $entityManager->persist($contact);
           $entityManager->flush();
+
+            $message = (new \Swift_Message('Hello Email'))
+                ->setFrom('percheron.nathan@outlook.fr')
+                ->setTo('percheron.nathan@outlook.fr')
+                ->setBody(
+                    $this->renderView(
+                        // templates/emails/contact.html.twig
+                        'emails/contact.html.twig',
+                        ['contact' => $contact]
+                    ),
+                    'text/html'
+                )
+
+
+                ;
+
+            $mailer->send($message);
 
           $this->addFlash(
               'info',

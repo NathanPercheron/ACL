@@ -64,7 +64,7 @@ class ArticleController extends AbstractController
      */
      public function getArticles(ArticleRepository $repo)
      {
-       $articles = $repo->findAll();
+       $articles = $repo->findBy(array('id' => 2));
        return $this->render('article/show.html.twig', [
            'controller_name' => 'ArticleController',
            'articles' => $articles

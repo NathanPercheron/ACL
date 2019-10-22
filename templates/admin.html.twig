@@ -1,0 +1,76 @@
+  {% block stylesheet %}
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="{{ asset('build/css/layout.css') }}" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/png" href="/uploads/favicon.png">
+  {% endblock %}
+
+  {% block javascripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  {% endblock %}
+
+<!-- Page Layout here -->
+<div class="row">
+    <div class="col s3">
+        <!-- Grey navigation panel -->
+        <ul class="sidenav sidenav-fixed" id="slide-out">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img class="responsive-img" src="https://i.postimg.cc/zB6d7HnC/light-bulb-1246043-1920.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="https://zupimages.net/up/19/04/y9vc.png"></a>
+                    <a href="#name">
+                        <span class="white-text name">{{ app.user.username }}
+                            {{ app.user.nom }}</span>
+                    </a>
+                    <a href="#email">
+                        <span class="white-text email">{{ app.user.email }}</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="{{ path ('accueil') }}"><i class="material-icons">home</i>Home</a>
+                <a href="{{ path ('admin') }}"><i class="material-icons">dashboard</i>Tableau de bord</a>
+
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a class="subheader">Ajout & Gestion</a>
+            </li>
+            <li>
+                <a class="waves-effect" href="{{ path ('article_new') }}">
+                    <i class="material-icons">edit</i>Créer un article</a>
+            </li>
+            <li>
+                <a class="waves-effect" href="{{ path ('partenaire_new') }}">
+                    <i class="material-icons">edit</i>Créer un partenaire</a>
+            </li>
+        </ul>
+        <a class="sidenav-trigger" data-target="slide-out" href="#">
+            <i class="material-icons">menu</i>
+        </a>
+    </div>
+</div>
+
+
+{% block body %}
+
+<title>ACL Bréalaise - Tableau de bord</title>
+
+<div
+    class="col s9">
+    <!-- Teal page content  -->
+    <div class="container">
+        <h1 class="text center">Tableau de bord administrateur</h1>
+    </div>
+</div>
+
+
+{% endblock %}
